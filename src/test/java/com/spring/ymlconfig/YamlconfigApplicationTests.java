@@ -1,0 +1,13 @@
+package com.spring.ymlconfig;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class YamlconfigApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

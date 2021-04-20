@@ -1,0 +1,71 @@
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+name: data-copy-dev
+environment: development
+enabled: true
+sources:
+  source1:
+    name: source1
+    active: true
+    connectionUrl: sftp://user@ip
+    pass: pass
+    keyfile:
+    path: /root/path
+    validFilesAge: 15d
+    srcToDest:
+      - fileRe: (File1.*.csv)
+        delimiter: ','
+        destObject: desttable1
+        destdsName: dest1
+
+      - fileRe: (File2.*.csv)
+        delimiter: ','
+        destObject: desttable2
+        destdsName: dest1
+
+  source2:
+    name: source2
+    active: true
+    connectionUrl: user@ip
+    pass: pass
+    keyfile:
+    path: /root/path2
+    validFilesAge: 15d
+    srcToDest:
+      - fileRe: (File1.*.psv)
+        delimiter: '|'
+        destObject: desttable2
+        destdsName: dest2
+
+      - fileRe: (File2.*.psv)
+        delimiter: '|'
+        destObject: desttable2
+        destdsName: dest2
+
+destinations:
+  dest1:
+    name: dest1
+    connectionUrl: connectionString
+    user: user
+    pass: pass
+
+  dest2:
+    name: dest2
+    connectionUrl: connectionString
+    user:
+    pass:
+
+---
+spring:
+  config:
+    activate:
+      on-profile:
+        - prod
+name: data-copy-prod
+environment: production
+enabled: false
+
+
